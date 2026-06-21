@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DocCollab Editor</title>
+<link rel="stylesheet" href="/static/editor.css">
+</head>
+<body>
+<div class="editor-topbar">
+<div class="logo-area">
+    <div class="doc-icon">📄</div>
+    <div>
+        <input
+        class="document-name"
+        value="{{ document.title if document else 'Untitled Document' }}">
+        <div class="save-status">
+            ✓ Connected to Database
+        </div>
+    </div>
+</div>
+<div class="editor-search">
+    <input
+    type="text"
+    placeholder="Search inside document">
+</div>
+<div class="top-actions">
+    <div class="version-badge">
+        Version {{ latest_version }}
+    </div>
+    <div class="avatar">VT</div>
+    <div class="avatar">AS</div>
+    <div class="avatar">PP</div>
+    <button
+    class="share-btn"
+    onclick="saveVersion()">
+        Save Version
+    </button>
+</div>
+</div>
+<div class="menu-bar">
+<span>File</span>
+<span>Edit</span>
+<span>Insert</span>
+<span>Format</span>
+<span>Review</span>
+<span>Collaborate</span>
+</div>
+<div class="toolbar">
+<button><b>B</b></button>
+<button><i>I</i></button>
+<button><u>U</u></button>
+<button>🔗</button>
+<button>📎</button>
+<button>🖼️</button>
+<button>📊</button>
+<select>
+    <option>Arial</option>
+</select>
+<select>
+    <option>12</option>
+    <option>14</option>
+    <option>16</option>
+    <option>18</option>
+</select>
+</div>
+<div class="editor-layout">
+<div class="left-panel">
+<h3>Document Sections</h3>
+<div class="section active">Executive Summary</div>
+<div class="section">Architecture</div>
+<div class="section">Database Design</div>
+<div class="section">API Layer</div>
+<div class="section">Deployment</div>
+<h3 class="mt">Statistics</h3>
+<div class="stat">Live Document</div>
+<div class="stat">Version Controlled</div>
+<div class="stat">{{ comments|length }} Comments</div>
+<div class="stat">SQLite Database</div>
+</div>
+<div class="document-area">
+<div
+class="document-page"
+contenteditable="true"
+id="editorContent">
+<h1>ParkingIQ Smart Parking Cloud</h1>
+<p>
+ParkingIQ is a cloud-based smart parking management platform designed for metropolitan cities including Mumbai, Navi Mumbai, Pune and Bengaluru.
+</p>
+<h2>System Architecture</h2>
+<p>
+User Interface → Flask Application → SQLite Database → Analytics Engine
+</p>
+<h2>Database Design</h2>
+<p>
+The platform stores users, parking slots, bookings, payments and reports.
+</p>
+<h2>Features</h2>
+<ul>
+<li>Real-time Parking Availability</li>
+<li>Cloud Synchronization</li>
+<li>QR Based Entry</li>
+<li>Analytics Dashboard</li>
+<li>Automated Billing</li>
+</ul>
+<h2>Future Scope</h2>
+<p>
+AI based parking prediction and smart city integration.
+</p>
+</div>
+</div>
+<div class="right-panel">
+<h3>Collaboration Feed</h3>
+<div class="activity">
+Latest Version Saved
+</div>
+<div class="activity">
+Database Connected
+</div>
+<div class="activity">
+Comments Synced
+</div>
+<h3 class="mt">Comments</h3>
+
+{% for comment in comments %}
+
+<div class="comment">
+<strong>
+{{ comment.username }}
+</strong>
+<p>
+{{ comment.comment }}
+</p>
+</div>
+
+{% endfor %}
+
+<textarea
+id="commentText"
+placeholder="Write a comment">
+</textarea>
+
+Post Comment
+
+</button>
+</div>
+</div>
+<script>
+function saveVersion(){
+let content =
+document.getElementById(
+"editorContent"
+).innerHTML;
+fetch(
+"/save-document",
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/x-www-form-urlencoded"
+},
+body:
+"content=" +
+encodeURIComponent(content)
+}
+)
+.then(response=>response.json())
+.then(data=>{
+alert(
+"Version " +
+data.version +
+" Saved Successfully"
+);
+location.reload();
+});
+}
+function addComment(){
+let comment =
+document.getElementById(
+"commentText"
+).value;
+if(comment.trim()==""){
+alert("Enter a comment");
+return;
+}
+fetch(
+"/add-comment",
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/x-www-form-urlencoded"
+},
+body:
+"username=Vrish&comment=" +
+encodeURIComponent(comment)
+}
+)
+.then(response=>response.json())
+.then(data=>{
+alert("Comment Added Successfully");
+location.reload();
+});
+}
+</script>
+</body>
+</html>

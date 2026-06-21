@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DocCollab System Architecture</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f6f8fc;
+padding:40px;
+overflow-y:auto;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+}
+
+h1{
+font-size:48px;
+margin-bottom:30px;
+color:#202124;
+}
+
+.architecture-card{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+margin-bottom:30px;
+}
+
+.diagram{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:20px;
+}
+
+.box{
+width:400px;
+padding:20px;
+background:#4285f4;
+color:white;
+font-weight:600;
+text-align:center;
+border-radius:14px;
+font-size:20px;
+}
+
+.arrow{
+font-size:34px;
+font-weight:bold;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.info-card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.info-card h2{
+margin-bottom:15px;
+color:#202124;
+}
+
+.info-card p{
+line-height:1.8;
+color:#555;
+}
+
+.tables{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-top:30px;
+}
+
+.table-card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.table-card h3{
+margin-bottom:10px;
+}
+
+.back-btn{
+display:inline-block;
+padding:14px 25px;
+background:#4285f4;
+color:white;
+text-decoration:none;
+border-radius:10px;
+margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>DocCollab Pro System Architecture</h1>
+
+<div class="architecture-card">
+
+<div class="diagram">
+
+<div class="box">
+User Browser
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="box">
+Login Page
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="box">
+Dashboard
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="box">
+Collaborative Editor
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="box">
+Real-Time Communication Layer (SocketIO)
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="box">
+Flask Application Server
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="box">
+Conflict Resolution Engine (OT / Last Write Wins)
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="box">
+Version Control System
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="box">
+SQLite Database
+</div>
+
+</div>
+
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h2>Client Layer</h2>
+
+<p>
+Users access DocCollab through a web browser.
+The client layer contains the Login Page,
+Dashboard and Collaborative Editor where users
+create, edit and manage documents.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h2>Application Layer</h2>
+
+<p>
+The Flask Application Server handles routing,
+authentication, document management,
+sharing, comments, version control and
+real-time collaboration requests.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h2>Real-Time Collaboration Layer</h2>
+
+<p>
+SocketIO enables multiple users to work
+on the same document simultaneously.
+Changes are synchronized between connected
+clients in real time.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h2>Conflict Resolution Layer</h2>
+
+<p>
+When two users edit the same document,
+the Conflict Resolution Engine applies
+Operational Transformation concepts and
+Last Write Wins logic to maintain consistency.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h2>Version Control Layer</h2>
+
+<p>
+Every save operation creates a version entry.
+Users can review document history and restore
+previous versions if required.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h2>Storage Layer</h2>
+
+<p>
+SQLite stores documents, comments,
+version history and collaborator information.
+The database ensures persistent storage
+and efficient retrieval.
+</p>
+
+</div>
+
+</div>
+
+<h1 style="margin-top:40px;">
+Database Tables
+</h1>
+
+<div class="tables">
+
+<div class="table-card">
+<h3>Documents</h3>
+<p>
+Title<br>
+Content<br>
+Owner<br>
+Created Date
+</p>
+</div>
+
+<div class="table-card">
+<h3>Comments</h3>
+<p>
+Username<br>
+Comment<br>
+Document ID
+</p>
+</div>
+
+<div class="table-card">
+<h3>Versions</h3>
+<p>
+Version Number<br>
+Content<br>
+Timestamp
+</p>
+</div>
+
+<div class="table-card">
+<h3>Collaborators</h3>
+<p>
+Name<br>
+Email<br>
+Document Access
+</p>
+</div>
+
+</div>
+
+<a href="/dashboard" class="back-btn">
+← Back to Dashboard
+</a>
+
+</div>
+
+</body>
+</html>

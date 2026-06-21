@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DocCollab Pro</title>
+
+<link rel="stylesheet" href="/static/dashboard.css">
+
+</head>
+
+<body>
+
+<div class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            📄
+        </div>
+
+        <div>
+
+            <h2>DocCollab Pro</h2>
+
+            <span>
+                Collaborative Workspace
+            </span>
+
+        </div>
+
+    </div>
+
+    <input
+    type="text"
+    class="search"
+    placeholder="Search documents, collaborators and projects">
+
+    <div class="top-actions">
+
+        <button class="icon-btn">
+            🔔
+        </button>
+
+        <button class="icon-btn">
+            ⚙️
+        </button>
+
+        <div class="avatar">
+            VT
+        </div>
+
+    </div>
+
+</div>
+
+<div class="dashboard-layout">
+
+    <div class="sidebar">
+
+        <a href="/dashboard" class="menu active">
+            🏠 Dashboard
+        </a>
+
+        <a href="/editor" class="menu">
+            📝 Documents
+        </a>
+
+        <a href="/comments" class="menu">
+            💬 Comments
+        </a>
+
+        <a href="/versions" class="menu">
+            🕒 Versions
+        </a>
+
+        <a href="/team" class="menu">
+            👥 Team
+        </a>
+
+        <a href="/architecture" class="menu">
+            🏗 Architecture
+        </a>
+
+        <a href="/conflict" class="menu">
+            ⚔ Conflict
+        </a>
+
+        <a href="/analytics" class="menu">
+            📊 Analytics
+        </a>
+
+    </div>
+
+    <div class="main-content">
+
+        <div class="hero-card">
+
+            <div>
+
+                <h1>
+                    Welcome Back, Vrish 👋
+                </h1>
+
+                <p>
+                    Manage, collaborate and version-control documents in real time.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <h2>24</h2>
+
+                <p>Documents</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>12</h2>
+
+                <p>Collaborators</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>76</h2>
+
+                <p>Versions</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>42</h2>
+
+                <p>Comments</p>
+
+            </div>
+
+        </div>
+
+        <h2 class="section-title">
+            Create New
+        </h2>
+
+        <div class="templates">
+
+            <a href="/editor" class="template-card">
+
+                <div class="template-icon">
+                    +
+                </div>
+
+                <h3>Blank Document</h3>
+
+                <p>
+                    Start from scratch
+                </p>
+
+            </a>
+
+            <div class="template-card">
+
+                <div class="template-icon">
+                    📄
+                </div>
+
+                <h3>Report</h3>
+
+                <p>
+                    Professional report
+                </p>
+
+            </div>
+
+            <div class="template-card">
+
+                <div class="template-icon">
+                    📝
+                </div>
+
+                <h3>Meeting Notes</h3>
+
+                <p>
+                    Team discussions
+                </p>
+
+            </div>
+
+            <div class="template-card">
+
+                <div class="template-icon">
+                    📊
+                </div>
+
+                <h3>Project Plan</h3>
+
+                <p>
+                    Planning template
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="documents-card">
+
+            <div class="card-header">
+
+                <h2>
+                    Recent Documents
+                </h2>
+
+            </div>
+
+            <table>
+
+                <tr>
+
+                    <th>Name</th>
+
+                    <th>Owner</th>
+
+                    <th>Modified</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>ParkingIQ Smart Parking Cloud</td>
+
+                    <td>Vrish Thadani</td>
+
+                    <td>Today</td>
+
+                    <td>
+                        <span class="badge green">
+                            Shared
+                        </span>
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>CyberShield Global Report</td>
+
+                    <td>Aarav Sharma</td>
+
+                    <td>Today</td>
+
+                    <td>
+                        <span class="badge blue">
+                            Active
+                        </span>
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Mumbai Metro Proposal</td>
+
+                    <td>Rohan Mehta</td>
+
+                    <td>Yesterday</td>
+
+                    <td>
+                        <span class="badge gray">
+                            Private
+                        </span>
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="right-panel">
+
+        <div class="panel">
+
+            <h2>
+                Activity Feed
+            </h2>
+
+            <div class="feed-item">
+                Priya edited Architecture Section
+            </div>
+
+            <div class="feed-item">
+                Aarav added comment
+            </div>
+
+            <div class="feed-item">
+                Version 4 created
+            </div>
+
+            <div class="feed-item">
+                Team member joined
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>
+                Storage
+            </h2>
+
+            <div class="storage-bar">
+
+                <div class="storage-fill"></div>
+
+            </div>
+
+            <p>
+                2.4 GB / 10 GB Used
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/static/app.js"></script>
+
+</body>
+
+</html>

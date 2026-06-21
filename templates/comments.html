@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Comments Center</title>
+<link rel="stylesheet" href="/static/dashboard.css">
+<style>
+body{
+background:#f5f7fb;
+}
+.container{
+padding:40px;
+}
+.comment-card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+.username{
+font-size:20px;
+font-weight:600;
+margin-bottom:10px;
+}
+.date{
+color:gray;
+font-size:14px;
+margin-top:10px;
+}
+.add-box{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+margin-bottom:30px;
+}
+input,
+textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+button{
+padding:12px 20px;
+background:#4285f4;
+border:none;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Collaboration Comments</h1>
+<br>
+<div class="add-box">
+<input
+type="text"
+id="username"
+placeholder="Enter username">
+<textarea
+id="comment"
+placeholder="Enter comment">
+</textarea>
+<button onclick="addComment()">
+Add Comment
+</button>
+</div>
+{% for comment in comments %}
+<div class="comment-card">
+<div class="username">
+{{ comment.username }}
+</div>
+<div>
+{{ comment.comment }}
+</div>
+<div class="date">
+{{ comment.created_at }}
+</div>
+</div>
+{% endfor %}
+</div>
+<script>
+function addComment(){
+let username =
+document.getElementById(
+"username"
+).value;
+let comment =
+document.getElementById(
+"comment"
+).value;
+fetch(
+"/add-comment",
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/x-www-form-urlencoded"
+},
+body:
+"username=" +
+encodeURIComponent(username)
++
+"&comment=" +
+encodeURIComponent(comment)
+}
+)
+.then(response=>response.json())
+.then(data=>{
+location.reload();
+});
+}
+</script>
+</body>
+</html>

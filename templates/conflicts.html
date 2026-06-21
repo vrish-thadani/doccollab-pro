@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Conflict Resolution Demo</title>
+
+<style>
+
+body{
+font-family:Segoe UI,sans-serif;
+background:#f5f7fb;
+padding:40px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#666;
+margin-bottom:30px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+textarea{
+width:100%;
+height:180px;
+padding:15px;
+border:1px solid #ddd;
+border-radius:12px;
+resize:none;
+font-size:16px;
+}
+
+.btn{
+padding:12px 20px;
+background:#4285f4;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin-top:20px;
+margin-right:10px;
+}
+
+.output{
+background:white;
+padding:25px;
+border-radius:20px;
+margin-top:30px;
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.explanation{
+background:#eef5ff;
+padding:20px;
+border-radius:15px;
+margin-top:25px;
+line-height:1.8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Document Conflict Resolution</h1>
+
+<p class="subtitle">
+Two users edit the same sentence at the same time.
+The system must decide how to resolve the conflict.
+</p>
+
+<div class="row">
+
+<div class="card">
+
+<h2>User A</h2>
+
+<textarea id="userA">
+ParkingIQ provides real-time parking availability for Mumbai.
+</textarea>
+
+</div>
+
+<div class="card">
+
+<h2>User B</h2>
+
+<textarea id="userB">
+ParkingIQ provides smart parking analytics for Navi Mumbai.
+</textarea>
+
+</div>
+
+</div>
+
+<button class="btn" onclick="lastWriteWins()">
+Last Write Wins
+</button>
+
+<button class="btn" onclick="mergeEdits()">
+Merge Both Edits
+</button>
+
+<div class="output">
+
+<h2>Resolved Result</h2>
+
+<br>
+
+<div id="result">
+
+No conflict resolved yet.
+
+</div>
+
+</div>
+
+<div class="explanation">
+
+<h3>How it Works</h3>
+
+<br>
+
+<b>Last Write Wins:</b>
+
+The latest user update replaces the previous one.
+
+<br><br>
+
+<b>Merge Strategy:</b>
+
+The system combines both user changes into one final document.
+
+<br><br>
+
+These are common techniques used in collaborative editors like Google Docs and Microsoft Office Online.
+
+</div>
+
+</div>
+
+<script>
+
+function lastWriteWins(){
+
+let text =
+document.getElementById("userB").value;
+
+document.getElementById("result").innerHTML =
+text;
+
+}
+
+function mergeEdits(){
+
+let a =
+document.getElementById("userA").value;
+
+let b =
+document.getElementById("userB").value;
+
+document.getElementById("result").innerHTML =
+a + "<br><br>" + b;
+
+}
+
+</script>
+
+</body>
+
+</html>

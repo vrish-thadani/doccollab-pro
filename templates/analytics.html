@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics Dashboard</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+body{
+background:linear-gradient(
+135deg,
+#f8fafc,
+#eef2ff
+);
+min-height:100vh;
+padding:40px;
+}
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:35px;
+}
+.title{
+font-size:42px;
+font-weight:800;
+}
+.subtitle{
+color:#6b7280;
+margin-top:8px;
+}
+.back-btn{
+background:#4285f4;
+color:white;
+padding:12px 18px;
+border-radius:12px;
+text-decoration:none;
+font-weight:600;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+margin-bottom:35px;
+}
+.card{
+background:white;
+padding:30px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+text-align:center;
+transition:.25s;
+}
+.card:hover{
+transform:translateY(-5px);
+}
+.number{
+font-size:52px;
+font-weight:800;
+color:#4285f4;
+margin-bottom:12px;
+}
+.label{
+font-size:18px;
+font-weight:600;
+}
+.charts{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-bottom:25px;
+}
+.chart-card{
+background:white;
+padding:30px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+.chart-title{
+font-size:22px;
+font-weight:700;
+margin-bottom:20px;
+}
+.bar{
+height:18px;
+background:#e5e7eb;
+border-radius:999px;
+overflow:hidden;
+margin-bottom:20px;
+}
+.fill{
+height:100%;
+background:linear-gradient(
+90deg,
+#4285f4,
+#7c3aed
+);
+}
+.activity{
+background:white;
+padding:30px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+.activity h2{
+margin-bottom:20px;
+}
+.activity-item{
+padding:16px;
+background:#f8fafc;
+border-radius:14px;
+margin-bottom:12px;
+}
+</style>
+</head>
+<body>
+<div class="header">
+<div>
+<div class="title">
+Analytics Dashboard
+</div>
+<div class="subtitle">
+Project metrics and collaboration insights
+</div>
+</div>
+<a href="/dashboard" class="back-btn">
+Dashboard
+</a>
+</div>
+<div class="grid">
+<div class="card">
+<div class="number">{{ documents }}</div>
+<div class="label">Documents</div>
+</div>
+<div class="card">
+<div class="number">{{ comments }}</div>
+<div class="label">Comments</div>
+</div>
+<div class="card">
+<div class="number">{{ versions }}</div>
+<div class="label">Versions</div>
+</div>
+<div class="card">
+<div class="number">{{ collaborators }}</div>
+<div class="label">Collaborators</div>
+</div>
+</div>
+<div class="charts">
+<div class="chart-card">
+<div class="chart-title">
+Document Growth
+</div>
+<div class="bar">
+<div class="fill" style="width:85%"></div>
+</div>
+<p>85% project completion</p>
+</div>
+<div class="chart-card">
+<div class="chart-title">
+Collaboration Activity
+</div>
+<div class="bar">
+<div class="fill" style="width:72%"></div>
+</div>
+<p>72% active participation</p>
+</div>
+</div>
+<div class="activity">
+<h2>
+Recent Activity
+</h2>
+<div class="activity-item">
+Priya Patel edited Architecture Document
+</div>
+<div class="activity-item">
+Aarav Sharma added comments to CyberShield Report
+</div>
+<div class="activity-item">
+Version 4 created for ParkingIQ
+</div>
+<div class="activity-item">
+New collaborator added to project
+</div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
